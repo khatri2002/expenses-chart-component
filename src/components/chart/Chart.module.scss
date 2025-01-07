@@ -1,0 +1,127 @@
+// breakpoints for custom styles
+$sm: 640px;
+
+.container {
+  width: 30rem;
+  @media (width < $sm) {
+    width: 90%;
+  }
+
+  .header {
+    @apply flex items-center justify-between rounded-2xl bg-soft-red px-6 py-4 sm:px-7 sm:py-5;
+
+    .content {
+      @apply flex flex-col gap-y-1 text-white;
+
+      .label {
+        @apply opacity-90;
+      }
+
+      .value {
+        @apply text-2xl font-semibold sm:text-3xl;
+      }
+    }
+  }
+
+  .main {
+    @apply mt-5 rounded-2xl bg-white p-7 sm:p-8;
+
+    .heroText {
+      @apply mb-14 block text-2xl font-semibold text-dark-brown;
+    }
+
+    .wrapper {
+      @apply relative;
+
+      .loading {
+        @apply visible absolute flex w-full flex-col items-center justify-center gap-y-2 text-xs text-medium-brown opacity-100 transition duration-300 sm:text-sm;
+        height: 11rem;
+
+        span {
+          @apply text-center;
+        }
+
+        img {
+          @apply w-6 sm:w-7;
+        }
+
+        &.hide {
+          @apply invisible opacity-0;
+        }
+      }
+
+      .barContainer {
+        @apply invisible flex gap-x-3 opacity-0 transition duration-300 sm:gap-x-4;
+        height: 11rem;
+
+        .barWrapper {
+          @apply flex h-full w-full flex-col items-center justify-end gap-y-1;
+
+          .bar {
+            @apply relative w-full cursor-pointer rounded-md bg-soft-red transition-all duration-700;
+
+            .tooltip {
+              @apply invisible absolute -top-5 left-1/2 z-10 -translate-x-1/2 rounded bg-dark-brown px-2 py-1 text-sm font-medium text-white opacity-0 transition-all duration-300 sm:text-base;
+            }
+
+            &.active {
+              @apply bg-cyan;
+            }
+
+            &:hover {
+              @apply bg-soft-red/50;
+
+              &.active {
+                @apply bg-cyan/50;
+              }
+
+              .tooltip {
+                @apply visible -top-10 opacity-100;
+              }
+            }
+          }
+
+          .text {
+            @apply text-sm text-medium-brown;
+          }
+        }
+
+        &.show {
+          @apply visible opacity-100;
+        }
+      }
+    }
+
+    .divider {
+      @apply my-7 border-medium-brown/25;
+    }
+
+    .footer {
+      @apply flex items-end justify-between;
+
+      .footerHero {
+        @apply flex flex-col gap-y-2;
+
+        .heroLabel {
+          @apply text-medium-brown;
+        }
+
+        .heroValue {
+          @apply text-4xl font-bold text-dark-brown sm:text-5xl;
+        }
+      }
+
+      .footerSub {
+        @apply flex flex-col items-end;
+
+        .subValue {
+          @apply font-semibold text-dark-brown;
+        }
+
+        .subLabel {
+          @apply text-medium-brown;
+        }
+      }
+    }
+  }
+}
